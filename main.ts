@@ -6,15 +6,14 @@ namespace Picogame {
     let i2cbuf = pins.createBuffer(1);
     i2cbuf[0] = send_id;
     pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
-
     let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
-	let receivedData = readbuf[0];
-	if (receivedData !== undefined) {
+    let receivedData = readbuf[0];
+    if (receivedData !== undefined) {
             send_id = readbuf[0];
-	} else {
+    } else {
 	    receivedData =0;
-	}
-		return receivedData;
+    }
+	return receivedData;
 }
 	
 	//% block
@@ -50,6 +49,6 @@ namespace Picogame {
     handler(rev_data);
     }
   }
-
+		   }
 	
 }
