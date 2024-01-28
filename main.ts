@@ -16,7 +16,6 @@ namespace Picogame {
 	return receivedData;
 }
 	
-	//% block
     //% blockId="sensor_read" block="Receive data"
     export function i2cRead(): number {
 	let i2cbuf = pins.createBuffer(1);
@@ -31,6 +30,7 @@ namespace Picogame {
 	}
 		return receivedData;
     }
+
     //% blockId="sensor_write" block="Broadcast value |%v"
     //% v.min=0 v.max=200
     export function i2cwrite(v: number): void {
@@ -38,17 +38,14 @@ namespace Picogame {
         i2cbuf1[0] = v;
         pins.i2cWriteBuffer(PG_ADDR, i2cbuf1);
     }	
-   //% block
+    //% blockId="read_loop" block="onReceivedMessage"
     //% draggableParameters
-  export function onI2CNumberReceived(handler: (rev_data: number) => void): void {
-    // 从 I2C 读取数据
-    game.onUpdate(function () {
+  export function onReceivedMessage(handler: (rev_data: number) => void): void {
+     game.onUpdate(function () {
      let rev_data = readmsg();
         if (rev_data !== 0 && rev_data !== 231) {
-            // 执行传入的 handler 函数，并传递 rev_data
             handler(rev_data);
         }
     });
-}
-	
+ }	
 }
