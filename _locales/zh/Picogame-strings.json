@@ -1,5 +1,6 @@
 {
     "Picogame|block": "PicoGame",
+    "Picogame.onReceivedMessage|block": "當收到廣播數值 ",
     "Picogame.sensor_write|block": "廣播 數值|%v ",
     "Picogame.sensor_read|block": "接收數值"
 }
