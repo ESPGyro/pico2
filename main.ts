@@ -44,10 +44,12 @@ namespace Picogame {
    export function onI2CNumberReceived(handler: (rev_data: number) => void): void {
     // 從 I2C 讀取數據
     let rev_data = readmsg();
-
+     game.onUpdate(function () {
+    if (rev_data != 0 && rev_data != 231) {
     // 執行傳入的 handler 函數，並傳遞 rev_data
     handler(rev_data);
-}
+    }
+  }
 
 	
 }
