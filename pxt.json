@@ -1,0 +1,26 @@
+{
+    "name": "Picogame",
+    "version": "1.0.0",
+    "description": "PicoGame 專用積木",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "main.ts",
+        "README.md",
+        "_locales/zh/README.md",
+        "_locales/zh/Picogame-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "4.0.16",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "Mason"
+}

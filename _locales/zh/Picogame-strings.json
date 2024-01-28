@@ -1,0 +1,5 @@
+{
+    "Picogame|block": "PicoGame",
+    "Picogame.sensor_write|block": "廣播 數值|%v ",
+    "Picogame.sensor_read|block": "接收數值"
+}
