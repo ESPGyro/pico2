@@ -2,7 +2,22 @@ const PG_ADDR = 0x66;
 let send_id = 255;
 //% color="#AA278D" icon="\uf2dc" weight=50
 namespace Picogame {
-    //% block
+  function readmsg(): number {
+    let i2cbuf = pins.createBuffer(1);
+    i2cbuf[0] = send_id;
+    pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
+
+    let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
+	let receivedData = readbuf[0];
+	if (receivedData !== undefined) {
+            send_id = readbuf[0];
+	} else {
+	    receivedData =0;
+	}
+		return receivedData;
+}
+	
+	//% block
     //% blockId="sensor_read" block="Receive data"
     export function i2cRead(): number {
 	let i2cbuf = pins.createBuffer(1);
@@ -24,4 +39,15 @@ namespace Picogame {
         i2cbuf1[0] = v;
         pins.i2cWriteBuffer(PG_ADDR, i2cbuf1);
     }	
+   //% block
+    //% draggableParameters
+   export function onI2CNumberReceived(handler: (rev_data: number) => void): void {
+    // 從 I2C 讀取數據
+    let rev_data = readmsg();
+
+    // 執行傳入的 handler 函數，並傳遞 rev_data
+    handler(rev_data);
+}
+
+	
 }
