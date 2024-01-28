@@ -2,5 +2,5 @@
     "Picogame|block": "PicoGame",
     "Picogame.onReceivedMessage|block": "當收到廣播數值 ",
     "Picogame.i2cwrite|block": "廣播 數值|%v ",
-    "Picogame.Receive data|block": "接收數值"
+    "Picogame.i2cRead|block": "接收數值"
 }
