@@ -8,9 +8,9 @@ namespace Picogame {
   try {
         pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
         let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
-        let receivedData = readbuf[0];
 
-        if (receivedData !== undefined) {
+        if (readbuf !== undefined) {
+          let receivedData = readbuf[0];
             return receivedData;
         } else {
             return -1;
@@ -28,9 +28,9 @@ namespace Picogame {
 try {
         pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
         let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
-        let receivedData = readbuf[0];
 
-        if (receivedData !== undefined) {
+        if (readbuf !== undefined) {
+         let receivedData = readbuf[0];
             return receivedData;
         } else {
             return -1;
@@ -55,9 +55,9 @@ try {
             let revData = readmsg();
 
             // Assuming -1 is returned by readmsg in case of an error
-         //   if (revData !== -1 && revData !== 0 && revData !== 231) {
+            if (revData !== -1 && revData !== 0 && revData !== 231) {
                 handler(revData);
-        //   }
+           }
         } catch (error) {
     
         }
