@@ -51,9 +51,15 @@ try {
     //% draggableParameters
   export function onReceivedMessage(handler: (rev_data: number) => void): void {
      game.onUpdate(function () {
-     let rev_data = readmsg();
-        if (rev_data !== -1 && rev_data !== 0 && rev_data !== 231) {
-            handler(rev_data);
+        try {
+            let revData = readmsg();
+
+            // Assuming -1 is returned by readmsg in case of an error
+            if (revData !== -1 && revData !== 0 && revData !== 231) {
+                handler(revData);
+            }
+        } catch (error) {
+    
         }
     });
  }	
