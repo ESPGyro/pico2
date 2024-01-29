@@ -55,9 +55,9 @@ try {
             let revData = readmsg();
 
             // Assuming -1 is returned by readmsg in case of an error
-            if (revData !== -1 && revData !== 0 && revData !== 231) {
+         //   if (revData !== -1 && revData !== 0 && revData !== 231) {
                 handler(revData);
-            }
+        //   }
         } catch (error) {
     
         }
