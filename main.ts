@@ -13,7 +13,7 @@ namespace Picogame {
         if (receivedData !== undefined) {
             return receivedData;
         } else {
-            throw new Error("No data received from I2C device.");
+            return null;
         }
     } catch (error) {
         // 處理錯誤或返回特定的錯誤值
@@ -33,7 +33,7 @@ try {
         if (receivedData !== undefined) {
             return receivedData;
         } else {
-            throw new Error("No data received from I2C device.");
+            return null;
         }
     } catch (error) {
         return null; // 或者選擇返回其他適當的值來表示錯誤狀況
