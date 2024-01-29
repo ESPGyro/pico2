@@ -13,11 +13,11 @@ namespace Picogame {
         if (receivedData !== undefined) {
             return receivedData;
         } else {
-            return null;
+            return -1;
         }
     } catch (error) {
         // 處理錯誤或返回特定的錯誤值
-        return null; // 或者選擇返回其他適當的值來表示錯誤狀況
+        return -1; // 或者選擇返回其他適當的值來表示錯誤狀況
     }
 }
 	
@@ -33,10 +33,10 @@ try {
         if (receivedData !== undefined) {
             return receivedData;
         } else {
-            return null;
+            return -1;
         }
     } catch (error) {
-        return null; // 或者選擇返回其他適當的值來表示錯誤狀況
+        return -1; // 或者選擇返回其他適當的值來表示錯誤狀況
     }
     }
 
@@ -52,7 +52,7 @@ try {
   export function onReceivedMessage(handler: (rev_data: number) => void): void {
      game.onUpdate(function () {
      let rev_data = readmsg();
-        if (rev_data !== 0 && rev_data !== 231) {
+        if (rev_data !== -1 && rev_data !== 0 && rev_data !== 231) {
             handler(rev_data);
         }
     });
