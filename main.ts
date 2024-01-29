@@ -5,30 +5,42 @@ namespace Picogame {
   function readmsg(): number {
     let i2cbuf = pins.createBuffer(1);
     i2cbuf[0] = send_id;
-    pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
-    let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
-    let receivedData = readbuf[0];
-    if (receivedData !== undefined) {
-            send_id = readbuf[0];
-    } else {
-	    receivedData =0;
+  try {
+        pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
+        let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
+        let receivedData = readbuf[0];
+
+        if (receivedData !== undefined) {
+            return receivedData;
+        } else {
+            throw new Error("No data received from I2C device.");
+        }
+    } catch (error) {
+        console.error("I2C read error: ", error.message);
+        // 處理錯誤或返回特定的錯誤值
+        return null; // 或者選擇返回其他適當的值來表示錯誤狀況
     }
-	return receivedData;
 }
 	
     //% blockId="sensor_read" block="Receive data"
     export function i2cRead(): number {
 	let i2cbuf = pins.createBuffer(1);
           i2cbuf[0] = send_id; 
+try {
         pins.i2cWriteBuffer(PG_ADDR, i2cbuf);
         let readbuf = pins.i2cReadBuffer(PG_ADDR, 1);
-	let receivedData = readbuf[0];
-	if (receivedData !== undefined) {
-            send_id = readbuf[0];
-	} else {
-	    receivedData =0;
-	}
-		return receivedData;
+        let receivedData = readbuf[0];
+
+        if (receivedData !== undefined) {
+            return receivedData;
+        } else {
+            throw new Error("No data received from I2C device.");
+        }
+    } catch (error) {
+        console.error("I2C read error: ", error.message);
+        // 處理錯誤或返回特定的錯誤值
+        return null; // 或者選擇返回其他適當的值來表示錯誤狀況
+    }
     }
 
     //% blockId="sensor_write" block="Broadcast value |%v"
