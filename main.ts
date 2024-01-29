@@ -16,7 +16,6 @@ namespace Picogame {
             throw new Error("No data received from I2C device.");
         }
     } catch (error) {
-        console.error("I2C read error: ", error.message);
         // 處理錯誤或返回特定的錯誤值
         return null; // 或者選擇返回其他適當的值來表示錯誤狀況
     }
@@ -37,8 +36,6 @@ try {
             throw new Error("No data received from I2C device.");
         }
     } catch (error) {
-        console.error("I2C read error: ", error.message);
-        // 處理錯誤或返回特定的錯誤值
         return null; // 或者選擇返回其他適當的值來表示錯誤狀況
     }
     }
